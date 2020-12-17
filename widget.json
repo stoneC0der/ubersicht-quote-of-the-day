@@ -1,0 +1,6 @@
+{
+	"name": "quote-of-the-day.widget",
+	"description": "A widget that displays a random quote from They Said So Quotes API",
+	"author": "@stonecoder",
+	"email": "stonecodersoft@gmail.com"
+}
