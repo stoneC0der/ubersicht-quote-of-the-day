@@ -1,8 +1,8 @@
 export const command = () => {
 	
-	const categries = ["death", "love", "life", "funny", "inspire", "art"];
+	const categories = ["death", "love", "life", "funny", "inspire", "art"];
 	
-	const current_category = categries[3];
+	const current_category = categories[3];
 	
 	const method = "GET",
 	  url = "https://quotes.rest/qod?category=" + current_category + "&language=en";
@@ -37,22 +37,29 @@ export const author = localStorage.getItem("author");
 export const image = localStorage.getItem("background");
 
 export const className =
-  `
+`
 	bottom: 100px;
 	left: 25%;
 	width: 960px;
 	font-weight: 500;
 	font-family: -apple-system, Verdana;
 	color: #fff;
+	
+	p, h5, span, hr {
+		text-shadow: 0px 0px 2px rgba(0,0,0,0.50);
+	}
 
 	.quote-of-the-day {
 		padding: 1.1rem;
 		border-radius: .4rem;
 		position: relative;
 		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 	.quote-of-the-day::before {
-		//background: rgba(0,0,0,0.2);
+		background: rgba(0,0,0,0.25);
 		height: 100%;
 		width: 100%;
 		top: 0;
@@ -60,35 +67,33 @@ export const className =
 		content: "";
 		z-index: -1;
 		position: absolute;
-		border-radius: .4rem;
+		border-radius: .8rem;
 	}
 	.title {
 		text-align: center;
-		margin-bottom: 0;
-		color: #bbb;
+		margin: 0 auto 1rem auto;
+		color: #cfcfcf;
 	}
 	.quote {
 		font-size: 1rem;
-		text-align: center
+		text-align: center;
+		margin-right: 80px;
+		margin-top: 0;
 	}
 	.author {
 		font-size: 1rem;
 		color: #ccc; 
 		text-align: end;
-		margin-top: 1rem;
-		display: block
-	}
-	hr {
-		max-width: 50%;
-		margin-top: 2rem;
-		border: 2px solid #fff;
+		display: block;
+		align-self: flex-end;
+		margin-top: 0.99rem;
 	}
 	.image {
 		width: 64px;
 		height: 64px;
 		position: absolute;
-		top: 10px;
-		right: 10px;
+		top: 20px;
+		right: 20px;
 		border-radius: .4rem;
 		box-shadow: 0 0 15px -5px #000;
 	}
@@ -97,7 +102,6 @@ export const className =
 export const render = () => {
   return (
 	<div>
-		<hr />
 		<div className="quote-of-the-day">
 			<h5 className="title">{title}</h5>
 			<p className="quote">{quote}</p>
