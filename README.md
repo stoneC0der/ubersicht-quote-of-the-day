@@ -53,7 +53,7 @@ Edit the position by changing these settings:
 	left: 25%;
 	width: 960px; // no make it wider or narrowed
 	
-You can remove the line above by commenting line **97**, I use it to delimiter my clock widget
+<s>You can remove the line above by commenting line **97**, I use it to delimiter my clock widget</s>
 
 	<hr>
 	
