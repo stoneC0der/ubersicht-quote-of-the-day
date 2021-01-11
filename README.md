@@ -31,32 +31,54 @@ here are the predefined categories: **"death", "love", "life", "funny", "inspire
 	
 	const current_category = categries[3]; //start at 0-5
 	
-#### Default
+<s> #### Default</s>
 
-A default quote is set if no quote are return and the localStorage is empty
+<s>A default quote is set if no quote are return and the localStorage is empty</s>
 
-- *Never stop being a good person because of bad people*
+- <s>*Never stop being a good person because of bad people*</s>
 
 ### Appearance
 
 For white backgrounds, uncomment this line in the css class, increase the alpha to your liking:
 ```background: rgba(0,0,0,0.5)``` will be dark enough to be readable.
+**Note**: There is now minimum background color by default.
 
 	.quote-of-the-day::before 
 	{
 		//background: rgba(0,0,0,0.2);
 	}
+	
+If you use a different background for each mode like Darkish wallpaper when in Dark mode the text-color will be white & the opposite when using a white like wallpaper in Light mode
 
+uncomment this part to enable it, if you made your quote background a lot more darker you probably don't need
+	
+	/*@media(prefers-color-scheme: light) {
+		color: #444444;
+		
+		.title {
+			color: #888888;
+		}
+		.author {
+			color: #666666;
+		}
+	}*/
 Edit the position by changing these settings:
 	
 	bottom: 100px;
-	left: 25%;
-	width: 960px; // no make it wider or narrowed
+	left: 0;
+	
+To change the width of the container change this part according to your need
+
+	.quote-of-the-day-container {
+		margin: 0 auto;
+		max-width: 960px;// no make it wider or narrowed
+	}
 	
 <s>You can remove the line above by commenting line **97**, I use it to delimiter my clock widget</s>
 
 	<hr>
-	
+
+
 #### Quote image
 
 Comment line ** to hide the image
@@ -73,6 +95,3 @@ I use localStorage to limit the amount of request to the end point and to have t
 - [] Automatically set a random categry every day
 - [] Errors handling
 - [] A fancy desing (maybe)😃
-	
-
-
