@@ -27,3 +27,7 @@
 - Added support for System color scheme<br>
 *If you use a different background for each mode like Darkish wallpaper when in Dark mode the text-color will be white & the opposite when using a white like wallpaper in Light mode*<br>
 ***Disable by default Check the README.md file to set it up***
+
+## 0.2.0
+
+- A random category will now be set base on the refreshFrequency you've set (thanks to [@faisal3389](https://github.com/faisal3389)
