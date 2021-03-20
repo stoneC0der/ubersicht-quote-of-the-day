@@ -30,4 +30,4 @@
 
 ## 0.2.0
 
-- A random category will now be set base on the refreshFrequency you've set (thanks to [@faisal3389](https://github.com/faisal3389)
+- A random category will now be set base on the refreshFrequency you've set (thanks to [@faisal3389](https://github.com/faisal3389))
