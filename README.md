@@ -92,6 +92,6 @@ I use localStorage to limit the amount of request to the end point and to have t
 
 ## To Do
 
-- [] Automatically set a random categry every day
+- [x] Automatically set a random category every day
 - [] Errors handling
 - [] A fancy desing (maybe)😃

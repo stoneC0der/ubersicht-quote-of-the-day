@@ -9,7 +9,7 @@ export const command = () => {
 	 * Set category here using Index number
 	 *********************************************************************/
 
-	const current_category = categories[3];
+	const current_category = categories[Math.floor(Math.random() * 6)];
 	/*
 	 * DO not edit
 	 */
@@ -29,7 +29,7 @@ export const command = () => {
 			background: qodInfos.background,
 		}));
 	}).catch(error => {
-		//the was an error, probably a network error
+		// There was an error, probably a network error
 		// Fall back is to use the locally stored data if offline
 		// in case of first time running, open an issue on github or send error log
 		console.log('Quote of the Day Error: ', error);
