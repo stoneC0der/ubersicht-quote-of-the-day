@@ -3,26 +3,26 @@ export const command = () => {
 	 * Choose one of the category below
 	 * Index start at 0
 	 *********************************************************************/
-	
+
 	const categories = ["death", "love", "life", "funny", "inspire", "art"];
 	/*********************************************************************
 	 * Set category here using Index number
 	 *********************************************************************/
-	
+
 	const current_category = categories[3];
 	/*
 	 * DO not edit
 	 */
-	
+
 	const url = `https://quotes.rest/qod?category=${current_category}&language=en`;
-	
+
 	/**
 	 * Fetch the quote
 	 */
 	fetch(url).then(response => response.json()).then((data) => {
 		let qodInfos = data.contents.quotes[0];
 		// Store quote as json string
-		localStorage.setItem('quote_of_the_day',JSON.stringify({
+		localStorage.setItem('quote_of_the_day', JSON.stringify({
 			title: qodInfos.title,
 			quote: qodInfos.quote,
 			author: qodInfos.author,
@@ -34,7 +34,7 @@ export const command = () => {
 		// in case of first time running, open an issue on github or send error log
 		console.log('Quote of the Day Error: ', error);
 	});
-  }
+}
 
 /*********************************************************************
  * the refresh frequency in milliseconds
@@ -52,7 +52,7 @@ export const quote_of_the_day = JSON.parse(localStorage.getItem('quote_of_the_da
  * Style here
  **********************************************************************/
 export const className =
-`
+	`
 	bottom: 80px;
 	left: 0;
 	width: 100%;
@@ -146,8 +146,8 @@ export const render = () => {
 				<h5 className="title">{quote_of_the_day.title}</h5>
 				<blockquote className="quote" cite="https://quotes.rest/qod">{quote_of_the_day.quote}</blockquote>
 				<cite className="author">—{quote_of_the_day.author}</cite>
-				<img className="image" src={quote_of_the_day.background}/>
+				<img className="image" src={quote_of_the_day.background} />
 			</div>
 		</div>
-    );
+	);
 };
