@@ -93,5 +93,6 @@ I use localStorage to limit the amount of request to the end point and to have t
 ## To Do
 
 - [x] Automatically set a random category every day
-- [] Errors handling
-- [] A fancy desing (maybe)😃
+- [ ] Add a button (Hidden) somewhere on the widget to show a drop down list on click and manually set the category in interactive mode
+- [ ] Errors handling
+- [ ] A fancy desing (maybe)😃
