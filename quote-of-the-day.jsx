@@ -9,7 +9,38 @@ export const command = () => {
 	 * Set category here using Index number
 	 *********************************************************************/
 
-	const current_category = categories[Math.floor(Math.random() * 6)];
+	let current_category = categories[Math.floor(Math.random() * 6)];
+
+	/*****************************************************************
+	 * This part insures that the category does not change when 
+	 * the widget(s) is refresh before the refreshFrequency time.
+	 * to disable this behavior comment the code below up to the next comment "Do not edit"
+	 *****************************************************************/
+
+	// Get time at which the widget is started
+	const now = new Date().getTime();
+	// Next time the category should be updated
+	let nextCategoryOrQuoteUpdateTime = localStorage.getItem(
+		'nextCategoryOrQuoteUpdateTime'
+	) ?? null;
+	// The refreshFrequency to update the category
+	const frequency = localStorage.getItem('refreshFrequency');
+	if (nextCategoryOrQuoteUpdateTime !== null) {
+		if (now < nextCategoryOrQuoteUpdateTime) {
+			current_category = localStorage.getItem('currentCategory');
+		} else {
+			localStorage.setItem('nextCategoryOrQuoteUpdateTime',
+				parseInt(nextCategoryOrQuoteUpdateTime) + parseInt(frequency)
+			);
+			localStorage.setItem('currentCategory', current_category);
+		}
+	} else {
+		localStorage.setItem('nextCategoryOrQuoteUpdateTime',
+			parseInt(now) + parseInt(frequency)
+		);
+		localStorage.setItem('currentCategory', current_category);
+	}
+
 	/*
 	 * DO not edit
 	 */
@@ -43,6 +74,8 @@ export const command = () => {
  * 86400000 = every 24h / day
  *********************************************************************/
 export const refreshFrequency = 21600000;
+// This is use to set the category only when the widget is automatically refresh
+localStorage.setItem('refreshFrequency', refreshFrequency);
 /*********************************************************************
  * Extract quote from local storage
  *********************************************************************/
@@ -144,7 +177,9 @@ export const render = () => {
 		<div className="quote-of-the-day-container">
 			<div className="quote-of-the-day">
 				<h5 className="title">{quote_of_the_day.title}</h5>
-				<blockquote className="quote" cite="https://quotes.rest/qod">{quote_of_the_day.quote}</blockquote>
+				<blockquote className="quote" cite="https://quotes.rest/qod">
+					{quote_of_the_day.quote}
+				</blockquote>
 				<cite className="author">—{quote_of_the_day.author}</cite>
 				<img className="image" src={quote_of_the_day.background} />
 			</div>
