@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2
+
+- Fixed a bug where the quote will not automatically update on the widget after updating the localStorage
+- Fixed bug where the displayed quote will not be the same as the one in localStorage
+
 ## 0.2.1
 
 - Fixed quote category being change when the widget is manually refreshed when using Ūbersicht refresh all widget. (*This will persist the category until the refreshFrequency time is reached,if you want the old behavior refer to .jsx file to disable the new behavior*);
