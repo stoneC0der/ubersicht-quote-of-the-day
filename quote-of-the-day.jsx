@@ -4,12 +4,12 @@ export const command = () => {
 	 * Index start at 0
 	 *********************************************************************/
 
-	const categories = ["death", "love", "life", "funny", "inspire", "art"];
+	const categories = ["love", "life", "funny", "inspire", "art"];
 	/*********************************************************************
 	 * Set category here using Index number
 	 *********************************************************************/
 
-	let current_category = categories[Math.floor(Math.random() * 6)];
+	let current_category = categories[Math.floor(Math.random() * 5)];
 
 	/*****************************************************************
 	 * This part insures that the category does not change when 
@@ -33,6 +33,7 @@ export const command = () => {
 				parseInt(nextCategoryOrQuoteUpdateTime) + parseInt(frequency)
 			);
 			localStorage.setItem('currentCategory', current_category);
+			current_category = localStorage.getItem('currentCategory');
 		}
 	} else {
 		localStorage.setItem('nextCategoryOrQuoteUpdateTime',
@@ -65,6 +66,10 @@ export const command = () => {
 		// in case of first time running, open an issue on github or send error log
 		console.log('Quote of the Day Error: ', error);
 	});
+	/*********************************************************************
+	 * Extract quote from local storage
+	 *********************************************************************/
+	return JSON.parse(localStorage.getItem('quote_of_the_day'));
 }
 
 /*********************************************************************
@@ -76,10 +81,6 @@ export const command = () => {
 export const refreshFrequency = 21600000;
 // This is use to set the category only when the widget is automatically refresh
 localStorage.setItem('refreshFrequency', refreshFrequency);
-/*********************************************************************
- * Extract quote from local storage
- *********************************************************************/
-export const quote_of_the_day = JSON.parse(localStorage.getItem('quote_of_the_day'));
 
 /**********************************************************************
  * Style here
@@ -172,16 +173,16 @@ export const className =
     }*/
 `;
 
-export const render = () => {
+export const render = (data) => {
 	return (
 		<div className="quote-of-the-day-container">
 			<div className="quote-of-the-day">
-				<h5 className="title">{quote_of_the_day.title}</h5>
+				<h5 className="title">{data.output.title}</h5>
 				<blockquote className="quote" cite="https://quotes.rest/qod">
-					{quote_of_the_day.quote}
+					{data.output.quote}
 				</blockquote>
-				<cite className="author">—{quote_of_the_day.author}</cite>
-				<img className="image" src={quote_of_the_day.background} />
+				<cite className="author">—{data.output.author}</cite>
+				<img className="image" src={data.output.background} />
 			</div>
 		</div>
 	);
